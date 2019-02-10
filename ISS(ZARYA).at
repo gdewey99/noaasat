@@ -1,0 +1,5 @@
+recdate=$(date +%Y%m%d-%H%M)
+mapdate=$(date '+%d %m %Y %H:%M')
+timeout 202 /usr/local/bin/rtl_fm -d 0 -f 145.800M -s 48000 -g 44 -p 1 -F 9 -A fast -E DC ~/wxsat/recordings/ISS(ZARYA)-$recdate.raw
+/usr/bin/sox -t raw -r 48000 -es -b16 -c1 -V1 ~/wxsat/recordings/ISS(ZARYA)-$recdate.raw ~/wxsat/recordings/ISS(ZARYA)-$recdate.wav rate 11025
+touch -r ~/wxsat/recordings/ISS(ZARYA)-$recdate.raw ~/wxsat/recordings/ISS(ZARYA)-$recdate.wav

@@ -1,0 +1,14 @@
+recdate=$(date +%Y%m%d-%H%M)
+mapdate=$(date '+%d %m %Y %H:%M')
+timeout 488 /usr/local/bin/rtl_fm -d 0 -f 137.6200M -s 48000 -g 44 -p 1 -F 9 -A fast -E DC ~/wxsat/recordings/NOAA15-$recdate.raw
+/usr/bin/sox -t raw -r 48000 -es -b16 -c1 -V1 ~/wxsat/recordings/NOAA15-$recdate.raw ~/wxsat/recordings/NOAA15-$recdate.wav rate 11025
+touch -r ~/wxsat/recordings/NOAA15-$recdate.raw ~/wxsat/recordings/NOAA15-$recdate.wav
+/usr/local/bin/wxmap -T "NOAA 15" -H ~/wxsat/weather.txt -L "42.241/-75.98/264" -p0 -o "$mapdate" ~/wxsat/noaa15map.png
+/usr/local/bin/wxtoimg -e MCIR -m ~/wxsat/noaa15map.png ~/wxsat/recordings/NOAA15-$recdate.wav ~/wxsat/images/NOAA15-MCIR-$recdate.png
+/usr/local/bin/wxtoimg -e HVCT -m ~/wxsat/noaa15map.png ~/wxsat/recordings/NOAA15-$recdate.wav ~/wxsat/images/NOAA15-HVCT-$recdate.png
+#/usr/local/bin/wxtoimg -e MCIR-precip -m ~/wxsat/noaa15map.png ~/wxsat/recordings/NOAA15-$recdate.wav ~/wxsat/images/NOAA15-PRECIP-$recdate.png
+#bash ~/wxsat/Dropbox-Uploader/dropbox_uploader.sh upload ~/wxsat/images/NOAA15-*-$recdate.png /
+cp ~/wxsat/recordings/NOAA15-$recdate.* /media/cloud/coop/
+cp ~/wxsat/images/NOAA15-****-$recdate.* /media/cloud/coop/
+~/wxsat/tweet.sh upload ~/wxsat/images/NOAA15-HVCT-$recdate.*
+~/wxsat/tweet.sh upload ~/wxsat/images/NOAA15-MCIR-$recdate.*

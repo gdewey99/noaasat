@@ -1,0 +1,6 @@
+recdate=$(date +%Y%m%d-%H%M)
+timeout 660 /usr/local/bin/rtl_fm -M wbfm -d 0 -f 137.900M -s 120000 -g 44 -p 1 -F 9 -A fast -E DC ~/wxsat/recordings/MeteorM2-$recdate.raw
+/usr/bin/sox -t raw -r 72000 -es -b16 -c1 -V1 ~/wxsat/recordings/Meteorm2-$recdate.raw ~/wxsat/recordings/Meteorm2-$recdate.wav rate 11025
+touch -r ~/wxsat/recordings/Meteorm2-$recdate.raw ~/wxsat/recordingsMeteorm2-$recdate.wav
+cp -r ~/wxsat/recordings/* /media/cloud/coop/
+
