@@ -1,4 +1,0 @@
-recdate=$(date +%Y%m%d-%H%M)
-timeout 265 /usr/local/bin/rtl_fm -d 0 -f 145.800M -s 48000 -g 44 -p 1 -F 9 -A fast -E DC ~/wxsat/recordings/ISS-$recdate.raw
-/usr/bin/sox -t raw -r 48000 -es -b16 -c1 -V1 ~/wxsat/recordings/ISS-$recdate.raw ~/wxsat/recordings/ISS-$recdate.wav rate 11025
-cp ~/wxsat/recordings/ISS-$recdate.wav /media/cloud/coop/
