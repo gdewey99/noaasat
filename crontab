@@ -25,4 +25,4 @@
 3 0 * * * /home/gdewey/wxsat/noaa-scheduler.sh 18 137.9125
 4 0 * * * /home/gdewey/wxsat/noaa-scheduler.sh 19 137.1000
 5 0 * * * /bin/curl http://www.celestrak.com/NORAD/elements/weather.txt > /home/gdewey/wxsat/weather.txt
-5 0 * * * /bin/curl http://www.celestrak.com/NORAD/elements/stations.txt > /home/gdewey/wxsat/stations.txt
+6 0 * * * /bin/curl http://www.celestrak.com/NORAD/elements/stations.txt > /home/gdewey/wxsat/stations.txt
