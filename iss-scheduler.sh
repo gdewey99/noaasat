@@ -36,7 +36,7 @@ mapdate=\$(date '+%d %m %Y %H:%M')
 timeout $rectime /usr/local/bin/rtl_fm -d 0 -f ${freq}M -s 48000 -g 44 -p 1 -F 9 -A fast -E DC ~/wxsat/recordings/${bird}-\$recdate.raw
 /usr/bin/sox -t raw -r 48000 -es -b16 -c1 -V1 ~/wxsat/recordings/${bird}-\$recdate.raw ~/wxsat/recordings/${bird}-\$recdate.wav rate 11025
 touch -r ~/wxsat/recordings/${bird}-\$recdate.raw ~/wxsat/recordings/${bird}-\$recdate.wav
-cp ~/wxsat/recordings/${bird}-\$recdate.wav /media/cloud/coop/
+cp ~/wxsat/recordings/${bird}-\$recdate.wav /var/www/html/
 EOF
 #schedule at
 at -f ~/wxsat/${bird}.at -t $init
